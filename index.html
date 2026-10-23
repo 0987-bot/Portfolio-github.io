@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Video Portfolio</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -29,14 +29,15 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 4rem 0;
     }
 
-    /* Hero Section */
+    /* Header */
     header {
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
+      text-align: center;
     }
 
     h1 {
@@ -45,158 +46,253 @@
       margin-bottom: 0.5rem;
     }
 
-    .role {
-      font-size: 1.25rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .bio {
+    .subtitle {
       color: var(--muted);
       font-size: 1.1rem;
-      max-width: 600px;
     }
 
-    /* Section Styles */
-    section {
-      margin-bottom: 4rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .skill-tag {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 9999px;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-
-    /* Projects Grid */
-    .projects-grid {
+    /* Video Grid */
+    .video-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    @media (min-width: 640px) {
-      .projects-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .project-card {
+    .video-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
-    .project-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
     }
 
-    .project-desc {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      flex-grow: 1;
+    .preview-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #000;
+      overflow: hidden;
     }
 
-    .project-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
+    .preview-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .project-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Contact Links */
-    .contact-links {
+    /* Play overlay indicator */
+    .play-badge {
+      position: absolute;
+      inset: 0;
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.35);
+      transition: background 0.2s ease;
     }
 
-    .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
+    .play-badge svg {
+      width: 44px;
+      height: 44px;
+      fill: #ffffff;
+      opacity: 0.85;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
-    .contact-links a:hover {
-      text-decoration: underline;
+    .video-card:hover .play-badge svg {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+
+    .video-info {
+      padding: 1rem 1.25rem;
+    }
+
+    .video-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .video-desc {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Fullscreen Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .modal video {
+      width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      background: #000;
+      outline: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-title {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: var(--text);
     }
   </style>
 </head>
 <body>
+
   <div class="container">
     <header>
-      <h1>Your Name</h1>
-      <div class="role">Developer / Designer / Creator</div>
-      <p class="bio">
-        A short summary of what you do, what you build, and what you are passionate about.
-      </p>
+      <h1>Video Portfolio</h1>
+      <p class="subtitle">Click any project to watch in full view</p>
     </header>
 
-    <section>
-      <h2>Skills & Technologies</h2>
-      <div class="skills-grid">
-        <span class="skill-tag">JavaScript / Python</span>
-        <span class="skill-tag">Web Development</span>
-        <span class="skill-tag">UI/UX Design</span>
-        <span class="skill-tag">APIs & Cloud</span>
-        <span class="skill-tag">Git</span>
-      </div>
-    </section>
+    <div class="video-grid">
 
-    <section>
-      <h2>Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div>
-            <h3 class="project-title">Project One</h3>
-            <p class="project-desc">A brief summary of what this project solves and the stack used.</p>
+      <!-- Video Item 1 -->
+      <div class="video-card" onclick="openFullscreen('videos/clip1.mp4', 'Nissan GTR R35 Edit')">
+        <div class="preview-container">
+          <video muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
+            <source src="videos/clip1.mp4" type="video/mp4" />
+          </video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
-          <a href="#" class="project-link">View Project &rarr;</a>
         </div>
-        <div class="project-card">
-          <div>
-            <h3 class="project-title">Project Two</h3>
-            <p class="project-desc">Another key piece of work or application highlighting your strengths.</p>
-          </div>
-          <a href="#" class="project-link">View Project &rarr;</a>
+        <div class="video-info">
+          <h3 class="video-title">Nissan GTR R35 Edit</h3>
+          <p class="video-desc">Cinematic color grade & sound design</p>
         </div>
       </div>
-    </section>
 
-    <section>
-      <h2>Contact</h2>
-      <div class="contact-links">
-        <a href="mailto:your.email@example.com">Email</a>
-        <a href="https://github.com" target="_blank">GitHub</a>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <!-- Video Item 2 -->
+      <div class="video-card" onclick="openFullscreen('videos/clip2.mp4', 'Toyota GT86 Night Drive')">
+        <div class="preview-container">
+          <video muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
+            <source src="videos/clip2.mp4" type="video/mp4" />
+          </video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Toyota GT86 Night Drive</h3>
+          <p class="video-desc">Fast-cut rhythm editing</p>
+        </div>
       </div>
-    </section>
+
+      <!-- Video Item 3 -->
+      <div class="video-card" onclick="openFullscreen('videos/clip3.mp4', 'BMW M3 Showcase')">
+        <div class="preview-container">
+          <video muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
+            <source src="videos/clip3.mp4" type="video/mp4" />
+          </video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">BMW M3 Showcase</h3>
+          <p class="video-desc">Automotive reel showcase</p>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <!-- Fullscreen Modal Player -->
+  <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeFullscreen()">&times;</button>
+      <video id="fullVideo" controls playsinline></video>
+      <div class="modal-title" id="modalTitle"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('videoModal');
+    const fullVideo = document.getElementById('fullVideo');
+    const modalTitle = document.getElementById('modalTitle');
+
+    function openFullscreen(src, title) {
+      modalTitle.textContent = title;
+      fullVideo.src = src;
+      modal.classList.add('active');
+      fullVideo.play();
+
+      // Trigger browser native full screen mode if supported
+      if (fullVideo.requestFullscreen) {
+        fullVideo.requestFullscreen().catch(() => {});
+      } else if (fullVideo.webkitRequestFullscreen) {
+        fullVideo.webkitRequestFullscreen();
+      }
+    }
+
+    function closeFullscreen() {
+      fullVideo.pause();
+      fullVideo.src = '';
+      modal.classList.remove('active');
+
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    function closeOnBackdrop(e) {
+      if (e.target === modal) {
+        closeFullscreen();
+      }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeFullscreen();
+      }
+    });
+  </script>
+
 </body>
 </html>
