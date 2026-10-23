@@ -34,7 +34,6 @@
       padding: 4rem 0;
     }
 
-    /* Header */
     header {
       margin-bottom: 3rem;
       text-align: center;
@@ -74,7 +73,7 @@
       border-color: var(--accent);
     }
 
-    .preview-container {
+    .thumbnail-container {
       position: relative;
       width: 100%;
       padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -82,16 +81,21 @@
       overflow: hidden;
     }
 
-    .preview-container video {
+    .thumbnail-container img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
 
-    /* Play overlay indicator */
+    .video-card:hover .thumbnail-container img {
+      transform: scale(1.05);
+    }
+
+    /* Play Icon Overlay */
     .play-badge {
       position: absolute;
       inset: 0;
@@ -103,10 +107,10 @@
     }
 
     .play-badge svg {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       fill: #ffffff;
-      opacity: 0.85;
+      opacity: 0.9;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
@@ -130,12 +134,12 @@
       font-size: 0.85rem;
     }
 
-    /* Fullscreen Modal */
+    /* Modal / Pop-up Player */
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.92);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -148,18 +152,26 @@
 
     .modal-content {
       width: 100%;
-      max-width: 1100px;
-      display: flex;
-      flex-direction: column;
+      max-width: 900px;
       position: relative;
     }
 
-    .modal video {
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 */
       width: 100%;
-      max-height: 80vh;
-      border-radius: 8px;
       background: #000;
-      outline: none;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .modal-close {
@@ -173,12 +185,6 @@
       cursor: pointer;
       line-height: 1;
     }
-
-    .modal-title {
-      margin-top: 1rem;
-      font-size: 1.25rem;
-      color: var(--text);
-    }
   </style>
 </head>
 <body>
@@ -186,110 +192,77 @@
   <div class="container">
     <header>
       <h1>Video Portfolio</h1>
-      <p class="subtitle">Click any project to watch in full view</p>
+      <p class="subtitle">Click any project to play</p>
     </header>
 
     <div class="video-grid">
 
-      <!-- Video Item 1 -->
-      <div class="video-card" onclick="openFullscreen('videos/clip1.mp4', 'Nissan GTR R35 Edit')">
-        <div class="preview-container">
-          <video muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
-            <source src="videos/clip1.mp4" type="video/mp4" />
-          </video>
+      <!-- ITEM 1: Replace 'dQw4w9WgXcQ' with your YouTube Video ID -->
+      <div class="video-card" onclick="openModal('jRmsatr9p7g')">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/jRmsatr9p7g/hqdefault.jpg" alt="Nissan GTR Edit" />
           <div class="play-badge">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
         <div class="video-info">
           <h3 class="video-title">Nissan GTR R35 Edit</h3>
-          <p class="video-desc">Cinematic color grade & sound design</p>
+          <p class="video-desc">Cinematic color grading and pacing.</p>
         </div>
       </div>
 
-      <!-- Video Item 2 -->
-      <div class="video-card" onclick="openFullscreen('videos/clip2.mp4', 'Toyota GT86 Night Drive')">
-        <div class="preview-container">
-          <video muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
-            <source src="videos/clip2.mp4" type="video/mp4" />
-          </video>
+      <!-- ITEM 2: Replace 'dQw4w9WgXcQ' with your YouTube Video ID -->
+      <div class="video-card" onclick="openModal('dQw4w9WgXcQ')">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Toyota GT86 Reel" />
           <div class="play-badge">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
         <div class="video-info">
-          <h3 class="video-title">Toyota GT86 Night Drive</h3>
-          <p class="video-desc">Fast-cut rhythm editing</p>
-        </div>
-      </div>
-
-      <!-- Video Item 3 -->
-      <div class="video-card" onclick="openFullscreen('videos/clip3.mp4', 'BMW M3 Showcase')">
-        <div class="preview-container">
-          <video muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
-            <source src="videos/clip3.mp4" type="video/mp4" />
-          </video>
-          <div class="play-badge">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">BMW M3 Showcase</h3>
-          <p class="video-desc">Automotive reel showcase</p>
+          <h3 class="video-title">Toyota GT86 Reel</h3>
+          <p class="video-desc">Fast-paced automotive sequence.</p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Fullscreen Modal Player -->
+  <!-- Player Modal -->
   <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeFullscreen()">&times;</button>
-      <video id="fullVideo" controls playsinline></video>
-      <div class="modal-title" id="modalTitle"></div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="video-wrapper">
+        <iframe id="youtubeFrame" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
   <script>
     const modal = document.getElementById('videoModal');
-    const fullVideo = document.getElementById('fullVideo');
-    const modalTitle = document.getElementById('modalTitle');
+    const iframe = document.getElementById('youtubeFrame');
 
-    function openFullscreen(src, title) {
-      modalTitle.textContent = title;
-      fullVideo.src = src;
+    function openModal(videoId) {
+      // Autoplay starts automatically on open
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
       modal.classList.add('active');
-      fullVideo.play();
-
-      // Trigger browser native full screen mode if supported
-      if (fullVideo.requestFullscreen) {
-        fullVideo.requestFullscreen().catch(() => {});
-      } else if (fullVideo.webkitRequestFullscreen) {
-        fullVideo.webkitRequestFullscreen();
-      }
     }
 
-    function closeFullscreen() {
-      fullVideo.pause();
-      fullVideo.src = '';
+    function closeModal() {
+      // Clear src to immediately stop playback
+      iframe.src = '';
       modal.classList.remove('active');
-
-      if (document.fullscreenElement) {
-        document.exitFullscreen().catch(() => {});
-      }
     }
 
     function closeOnBackdrop(e) {
       if (e.target === modal) {
-        closeFullscreen();
+        closeModal();
       }
     }
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeFullscreen();
+        closeModal();
       }
     });
   </script>
