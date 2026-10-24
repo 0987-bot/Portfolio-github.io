@@ -6,12 +6,11 @@
   <title>Video Portfolio</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
       --text: #f8fafc;
       --muted: #94a3b8;
       --accent: #38bdf8;
-      --border: #334155;
+      --border: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(30, 41, 59, 0.7);
     }
 
     * {
@@ -21,11 +20,27 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
+    /* Animated Gradient Background */
     body {
-      background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
       padding: 0 1.5rem;
+      min-height: 100vh;
+      background: linear-gradient(-45deg, #090d16, #0f172a, #1e1b4b, #111827);
+      background-size: 400% 400%;
+      animation: gradientShift 16s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .container {
@@ -67,20 +82,22 @@
       gap: 1.5rem;
     }
 
-    /* Reels specific portrait grid */
     .reels-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
     }
 
+    /* Glassmorphism Cards */
     .video-card {
       background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       display: flex;
       flex-direction: column;
     }
@@ -88,9 +105,10 @@
     .video-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.25);
     }
 
-    /* 16:9 Aspect Ratio for standard videos */
+    /* 16:9 Standard Aspect Ratio */
     .thumbnail-container {
       position: relative;
       width: 100%;
@@ -99,7 +117,7 @@
       overflow: hidden;
     }
 
-    /* 9:16 Aspect Ratio for vertical reels */
+    /* 9:16 Vertical Reel Aspect Ratio */
     .reel-thumbnail-container {
       position: relative;
       width: 100%;
@@ -162,7 +180,7 @@
       font-size: 0.85rem;
     }
 
-    /* Modal / Pop-up Player */
+    /* Pop-up Player Modal */
     .modal {
       display: none;
       position: fixed;
@@ -184,7 +202,6 @@
       position: relative;
     }
 
-    /* Dynamically adjusted inside modal for reels */
     .modal-content.is-reel {
       max-width: 420px;
     }
@@ -239,7 +256,7 @@
       <!-- Wedding 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W1', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W1/hqdefault.jpg" alt="Wedding Teaser 1" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W1/hqdefault.jpg" alt="Wedding Teaser 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -251,7 +268,7 @@
       <!-- Wedding 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W2', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W2/hqdefault.jpg" alt="Wedding Teaser 2" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W2/hqdefault.jpg" alt="Wedding Teaser 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -263,7 +280,7 @@
       <!-- Wedding 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W3', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W3/hqdefault.jpg" alt="Wedding Teaser 3" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W3/hqdefault.jpg" alt="Wedding Teaser 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -275,7 +292,7 @@
       <!-- Wedding 4 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W4', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W4/hqdefault.jpg" alt="Wedding Teaser 4" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W4/hqdefault.jpg" alt="Wedding Teaser 04" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -287,7 +304,7 @@
       <!-- Wedding 5 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W5', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W5/hqdefault.jpg" alt="Wedding Teaser 5" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W5/hqdefault.jpg" alt="Wedding Teaser 05" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -299,7 +316,7 @@
       <!-- Wedding 6 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W6', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W6/hqdefault.jpg" alt="Wedding Teaser 6" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W6/hqdefault.jpg" alt="Wedding Teaser 06" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -317,7 +334,7 @@
       <!-- Reel 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R1', true)">
         <div class="reel-thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_R1/hqdefault.jpg" alt="Reel 1" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_R1/hqdefault.jpg" alt="Short Reel 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -329,7 +346,7 @@
       <!-- Reel 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R2', true)">
         <div class="reel-thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_R2/hqdefault.jpg" alt="Reel 2" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_R2/hqdefault.jpg" alt="Short Reel 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -341,7 +358,7 @@
       <!-- Reel 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R3', true)">
         <div class="reel-thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_R3/hqdefault.jpg" alt="Reel 3" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_R3/hqdefault.jpg" alt="Short Reel 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -359,7 +376,7 @@
       <!-- School Function 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S1', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_S1/hqdefault.jpg" alt="School Function 1" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_S1/hqdefault.jpg" alt="School Function 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -371,7 +388,7 @@
       <!-- School Function 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S2', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_S2/hqdefault.jpg" alt="School Function 2" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_S2/hqdefault.jpg" alt="School Function 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -383,7 +400,7 @@
       <!-- School Function 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S3', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_S3/hqdefault.jpg" alt="School Function 3" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_S3/hqdefault.jpg" alt="School Function 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
