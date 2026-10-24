@@ -6,11 +6,11 @@
   <title>Video Portfolio</title>
   <style>
     :root {
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --border: rgba(255, 255, 255, 0.08);
-      --card-bg: rgba(30, 41, 59, 0.7);
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: rgba(0, 0, 0, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.85);
     }
 
     * {
@@ -20,18 +20,35 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Animated Gradient Background */
+    /* Moving Google-style Multi-Color Gradient on White */
     body {
       color: var(--text);
       line-height: 1.6;
       padding: 0 1.5rem;
       min-height: 100vh;
-      background: linear-gradient(-45deg, #090d16, #0f172a, #1e1b4b, #111827);
-      background-size: 400% 400%;
-      animation: gradientShift 16s ease infinite;
+      position: relative;
+      background-color: #ffffff;
     }
 
-    @keyframes gradientShift {
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      /* Soft Google Brand Palette: Blue, Red, Yellow, Green drifting over white */
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(66, 133, 244, 0.18) 25%,   /* Google Blue */
+        rgba(234, 67, 53, 0.15) 50%,    /* Google Red */
+        rgba(251, 188, 5, 0.20) 75%,    /* Google Yellow */
+        rgba(52, 168, 83, 0.18) 100%    /* Google Green */
+      );
+      background-size: 300% 300%;
+      animation: googleGradient 14s ease infinite;
+    }
+
+    @keyframes googleGradient {
       0% {
         background-position: 0% 50%;
       }
@@ -55,24 +72,29 @@
     }
 
     h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
       margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
       color: var(--muted);
       font-size: 1.1rem;
+      font-weight: 500;
     }
 
     /* Section Headings */
     .section-title {
       font-size: 1.6rem;
-      font-weight: 600;
+      font-weight: 700;
       margin: 3.5rem 0 1.5rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
       padding-bottom: 0.5rem;
-      color: var(--accent);
+      color: #111827;
     }
 
     /* Grids */
@@ -88,32 +110,33 @@
       gap: 1.5rem;
     }
 
-    /* Glassmorphism Cards */
+    /* Frosted Glass Cards (Light Theme) */
     .video-card {
       background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
     }
 
     .video-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.25);
+      transform: translateY(-5px);
+      border-color: rgba(66, 133, 244, 0.4);
+      box-shadow: 0 16px 30px -6px rgba(66, 133, 244, 0.15);
     }
 
-    /* 16:9 Standard Aspect Ratio */
+    /* 16:9 Aspect Ratio */
     .thumbnail-container {
       position: relative;
       width: 100%;
       padding-top: 56.25%;
-      background: #000;
+      background: #e5e7eb;
       overflow: hidden;
     }
 
@@ -122,7 +145,7 @@
       position: relative;
       width: 100%;
       padding-top: 177.77%;
-      background: #000;
+      background: #e5e7eb;
       overflow: hidden;
     }
 
@@ -148,30 +171,31 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.25);
       transition: background 0.2s ease;
     }
 
     .play-badge svg {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       fill: #ffffff;
-      opacity: 0.9;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+      opacity: 0.95;
+      transition: transform 0.2s ease;
     }
 
     .video-card:hover .play-badge svg {
       transform: scale(1.15);
-      opacity: 1;
     }
 
     .video-info {
-      padding: 1rem 1.25rem;
+      padding: 1.1rem 1.25rem;
     }
 
     .video-title {
       font-size: 1.05rem;
       font-weight: 600;
+      color: #111827;
       margin-bottom: 0.25rem;
     }
 
@@ -180,12 +204,13 @@
       font-size: 0.85rem;
     }
 
-    /* Pop-up Player Modal */
+    /* Modal / Pop-up Player */
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.92);
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(6px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -211,8 +236,9 @@
       padding-top: 56.25%;
       width: 100%;
       background: #000;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
     .modal-content.is-reel .video-wrapper {
@@ -234,8 +260,8 @@
       right: 0;
       background: transparent;
       border: none;
-      color: var(--text);
-      font-size: 2rem;
+      color: #ffffff;
+      font-size: 2.2rem;
       cursor: pointer;
       line-height: 1;
     }
