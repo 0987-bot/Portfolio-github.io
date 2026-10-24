@@ -7,10 +7,10 @@
   <style>
     :root {
       --text: #1f2937;
-      --muted: #6b7280;
+      --muted: #4b5563;
       --accent: #2563eb;
       --border: rgba(0, 0, 0, 0.08);
-      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.9);
     }
 
     * {
@@ -20,7 +20,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Moving Google-style Multi-Color Gradient on White */
+    /* Deeper Animated Google-Style Gradient Background */
     body {
       color: var(--text);
       line-height: 1.6;
@@ -35,17 +35,17 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      /* Soft Google Brand Palette: Blue, Red, Yellow, Green drifting over white */
+      /* Deeper saturated stops for a more pronounced effect */
       background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(66, 133, 244, 0.18) 25%,   /* Google Blue */
-        rgba(234, 67, 53, 0.15) 50%,    /* Google Red */
-        rgba(251, 188, 5, 0.20) 75%,    /* Google Yellow */
-        rgba(52, 168, 83, 0.18) 100%    /* Google Green */
+        #ffffff 0%,
+        rgba(66, 133, 244, 0.38) 25%,   /* Deep Google Blue */
+        rgba(234, 67, 53, 0.32) 50%,    /* Deep Google Red */
+        rgba(251, 188, 5, 0.40) 75%,    /* Deep Google Yellow */
+        rgba(52, 168, 83, 0.36) 100%    /* Deep Google Green */
       );
-      background-size: 300% 300%;
-      animation: googleGradient 14s ease infinite;
+      background-size: 260% 260%;
+      animation: googleGradient 12s ease infinite;
     }
 
     @keyframes googleGradient {
@@ -76,7 +76,7 @@
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853);
+      background: linear-gradient(90deg, #1d4ed8, #dc2626, #d97706, #15803d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -84,7 +84,7 @@
     .subtitle {
       color: var(--muted);
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Section Headings */
@@ -92,7 +92,7 @@
       font-size: 1.6rem;
       font-weight: 700;
       margin: 3.5rem 0 1.5rem;
-      border-bottom: 2px solid var(--border);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
       padding-bottom: 0.5rem;
       color: #111827;
     }
@@ -110,16 +110,16 @@
       gap: 1.5rem;
     }
 
-    /* Frosted Glass Cards (Light Theme) */
+    /* Frosted Cards */
     .video-card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
@@ -127,8 +127,8 @@
 
     .video-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(66, 133, 244, 0.4);
-      box-shadow: 0 16px 30px -6px rgba(66, 133, 244, 0.15);
+      border-color: rgba(37, 99, 235, 0.5);
+      box-shadow: 0 16px 30px -6px rgba(37, 99, 235, 0.2);
     }
 
     /* 16:9 Aspect Ratio */
@@ -171,7 +171,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.28);
       transition: background 0.2s ease;
     }
 
@@ -179,7 +179,7 @@
       width: 48px;
       height: 48px;
       fill: #ffffff;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
       opacity: 0.95;
       transition: transform 0.2s ease;
     }
@@ -194,7 +194,7 @@
 
     .video-title {
       font-size: 1.05rem;
-      font-weight: 600;
+      font-weight: 700;
       color: #111827;
       margin-bottom: 0.25rem;
     }
@@ -204,7 +204,7 @@
       font-size: 0.85rem;
     }
 
-    /* Modal / Pop-up Player */
+    /* Pop-up Player Modal */
     .modal {
       display: none;
       position: fixed;
@@ -279,7 +279,6 @@
     <h2 class="section-title">Cinematic Wedding Teasers</h2>
     <div class="video-grid">
 
-      <!-- Wedding 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W1', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_W1/hqdefault.jpg" alt="Wedding Teaser 01" />
@@ -291,7 +290,6 @@
         </div>
       </div>
 
-      <!-- Wedding 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W2', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_W2/hqdefault.jpg" alt="Wedding Teaser 02" />
@@ -303,7 +301,6 @@
         </div>
       </div>
 
-      <!-- Wedding 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W3', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_W3/hqdefault.jpg" alt="Wedding Teaser 03" />
@@ -315,7 +312,6 @@
         </div>
       </div>
 
-      <!-- Wedding 4 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W4', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_W4/hqdefault.jpg" alt="Wedding Teaser 04" />
@@ -327,7 +323,6 @@
         </div>
       </div>
 
-      <!-- Wedding 5 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W5', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_W5/hqdefault.jpg" alt="Wedding Teaser 05" />
@@ -339,7 +334,6 @@
         </div>
       </div>
 
-      <!-- Wedding 6 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_W6', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_W6/hqdefault.jpg" alt="Wedding Teaser 06" />
@@ -357,7 +351,6 @@
     <h2 class="section-title">Reels</h2>
     <div class="reels-grid">
 
-      <!-- Reel 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R1', true)">
         <div class="reel-thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_R1/hqdefault.jpg" alt="Short Reel 01" />
@@ -369,7 +362,6 @@
         </div>
       </div>
 
-      <!-- Reel 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R2', true)">
         <div class="reel-thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_R2/hqdefault.jpg" alt="Short Reel 02" />
@@ -381,7 +373,6 @@
         </div>
       </div>
 
-      <!-- Reel 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R3', true)">
         <div class="reel-thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_R3/hqdefault.jpg" alt="Short Reel 03" />
@@ -399,7 +390,6 @@
     <h2 class="section-title">School Functions</h2>
     <div class="video-grid">
 
-      <!-- School Function 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S1', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_S1/hqdefault.jpg" alt="School Function 01" />
@@ -411,7 +401,6 @@
         </div>
       </div>
 
-      <!-- School Function 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S2', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_S2/hqdefault.jpg" alt="School Function 02" />
@@ -423,7 +412,6 @@
         </div>
       </div>
 
-      <!-- School Function 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S3', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_S3/hqdefault.jpg" alt="School Function 03" />
