@@ -89,7 +89,6 @@
       color: #111827;
     }
 
-    /* Slightly smaller card grid (min 260px instead of 300px) */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -102,7 +101,6 @@
       gap: 1.25rem;
     }
 
-    /* Cards */
     .video-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -177,7 +175,6 @@
       transform: scale(1.15);
     }
 
-    /* Title & Info Container */
     .video-info {
       padding: 0.9rem 1rem 1.1rem;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(243, 246, 251, 0.98) 100%);
@@ -216,7 +213,6 @@
       line-height: 1.4;
     }
 
-    /* Modal Player */
     .modal {
       display: none;
       position: fixed;
@@ -287,7 +283,7 @@
       <p class="subtitle">Click any project to play</p>
     </header>
 
-    <!-- SECTION 1: CINEMATIC WEDDING TEASERS (9 Videos) -->
+    <!-- SECTION 1: CINEMATIC WEDDING TEASERS (8 Videos) -->
     <h2 class="section-title">Cinematic Wedding Teasers</h2>
     <div class="video-grid">
 
@@ -395,19 +391,6 @@
         </div>
       </div>
 
-      <!-- Teaser 9 -->
-      <div class="video-card" onclick="openModal('IYySvgR-qvo', false)">
-        <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/IYySvgR-qvo/hqdefault.jpg" alt="Wedding Teaser 09" />
-          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">Wedding Film</span>
-          <h3 class="video-title">Wedding Teaser 09</h3>
-          <p class="video-desc">Unforgettable moments & cinematic cuts.</p>
-        </div>
-      </div>
-
     </div>
 
     <!-- SECTION 2: REELS (3 Vertical Videos) -->
@@ -421,4 +404,129 @@
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
-          <span class="video-badge
+          <span class="video-badge">Reel</span>
+          <h3 class="video-title">Short Reel 01</h3>
+          <p class="video-desc">Fast-cut rhythm sequence.</p>
+        </div>
+      </div>
+
+      <!-- Reel 2 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_R2', true)">
+        <div class="reel-thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_R2/hqdefault.jpg" alt="Short Reel 02" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Reel</span>
+          <h3 class="video-title">Short Reel 02</h3>
+          <p class="video-desc">Color grading breakdown.</p>
+        </div>
+      </div>
+
+      <!-- Reel 3 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_R3', true)">
+        <div class="reel-thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_R3/hqdefault.jpg" alt="Short Reel 03" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Reel</span>
+          <h3 class="video-title">Short Reel 03</h3>
+          <p class="video-desc">Cinematic sound design teaser.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 3: SCHOOL FUNCTIONS (3 Videos) -->
+    <h2 class="section-title">School Highlights</h2>
+    <div class="video-grid">
+
+      <!-- School 1 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_S1', false)">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_S1/hqdefault.jpg" alt="School Highlight 01" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">School Event</span>
+          <h3 class="video-title">Annual Day Celebration</h3>
+          <p class="video-desc">Stage performances and cultural events.</p>
+        </div>
+      </div>
+
+      <!-- School 2 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_S2', false)">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_S2/hqdefault.jpg" alt="School Highlight 02" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">School Event</span>
+          <h3 class="video-title">Sports Day Highlights</h3>
+          <p class="video-desc">Action sequences & prize distribution.</p>
+        </div>
+      </div>
+
+      <!-- School 3 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_S3', false)">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_S3/hqdefault.jpg" alt="School Highlight 03" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">School Event</span>
+          <h3 class="video-title">Graduation Ceremony</h3>
+          <p class="video-desc">Farewell speeches & ceremony documentary.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Player Modal -->
+  <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
+    <div class="modal-content" id="modalContainer">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="video-wrapper">
+        <iframe id="youtubeFrame" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('videoModal');
+    const modalContainer = document.getElementById('modalContainer');
+    const iframe = document.getElementById('youtubeFrame');
+
+    function openModal(videoId, isReel) {
+      if (isReel) {
+        modalContainer.classList.add('is-reel');
+      } else {
+        modalContainer.classList.remove('is-reel');
+      }
+
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      iframe.src = '';
+      modal.classList.remove('active');
+    }
+
+    function closeOnBackdrop(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
