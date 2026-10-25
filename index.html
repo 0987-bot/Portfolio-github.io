@@ -35,29 +35,22 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      /* Deeper saturated stops for a more pronounced effect */
       background: linear-gradient(
         135deg,
         #ffffff 0%,
-        rgba(66, 133, 244, 0.38) 25%,   /* Deep Google Blue */
-        rgba(234, 67, 53, 0.32) 50%,    /* Deep Google Red */
-        rgba(251, 188, 5, 0.40) 75%,    /* Deep Google Yellow */
-        rgba(52, 168, 83, 0.36) 100%    /* Deep Google Green */
+        rgba(66, 133, 244, 0.38) 25%,
+        rgba(234, 67, 53, 0.32) 50%,
+        rgba(251, 188, 5, 0.40) 75%,
+        rgba(52, 168, 83, 0.36) 100%
       );
       background-size: 260% 260%;
       animation: googleGradient 12s ease infinite;
     }
 
     @keyframes googleGradient {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
@@ -87,7 +80,6 @@
       font-weight: 600;
     }
 
-    /* Section Headings */
     .section-title {
       font-size: 1.6rem;
       font-weight: 700;
@@ -97,41 +89,39 @@
       color: #111827;
     }
 
-    /* Grids */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
     .reels-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
-    /* Frosted Cards */
+    /* Premium Frosted Card */
     .video-card {
       background: var(--card-bg);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
       overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
     }
 
     .video-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(37, 99, 235, 0.5);
-      box-shadow: 0 16px 30px -6px rgba(37, 99, 235, 0.2);
+      transform: translateY(-6px);
+      border-color: rgba(37, 99, 235, 0.45);
+      box-shadow: 0 16px 32px -4px rgba(37, 99, 235, 0.18);
     }
 
-    /* 16:9 Aspect Ratio */
     .thumbnail-container {
       position: relative;
       width: 100%;
@@ -140,7 +130,6 @@
       overflow: hidden;
     }
 
-    /* 9:16 Vertical Reel Aspect Ratio */
     .reel-thumbnail-container {
       position: relative;
       width: 100%;
@@ -157,22 +146,21 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.35s ease;
     }
 
     .video-card:hover img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
-    /* Play Icon Overlay */
     .play-badge {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.28);
-      transition: background 0.2s ease;
+      background: rgba(0, 0, 0, 0.25);
+      transition: background 0.25s ease;
     }
 
     .play-badge svg {
@@ -181,30 +169,53 @@
       fill: #ffffff;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
       opacity: 0.95;
-      transition: transform 0.2s ease;
+      transition: transform 0.25s ease;
     }
 
     .video-card:hover .play-badge svg {
       transform: scale(1.15);
     }
 
+    /* Attractive Title & Info Container */
     .video-info {
-      padding: 1.1rem 1.25rem;
+      padding: 1.1rem 1.25rem 1.25rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.95) 100%);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .video-badge {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--accent);
     }
 
     .video-title {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #111827;
-      margin-bottom: 0.25rem;
+      color: #0f172a;
+      transition: color 0.2s ease;
+    }
+
+    .video-card:hover .video-title {
+      color: var(--accent);
     }
 
     .video-desc {
       color: var(--muted);
       font-size: 0.85rem;
+      line-height: 1.45;
     }
 
-    /* Pop-up Player Modal */
+    /* Modal Player */
     .modal {
       display: none;
       position: fixed;
@@ -275,73 +286,111 @@
       <p class="subtitle">Click any project to play</p>
     </header>
 
-    <!-- SECTION 1: CINEMATIC WEDDING TEASERS (6 Videos) -->
+    <!-- SECTION 1: CINEMATIC WEDDING TEASERS (8 Videos) -->
     <h2 class="section-title">Cinematic Wedding Teasers</h2>
     <div class="video-grid">
 
-      <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
+      <!-- Teaser 1 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W1', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/Mcfp0a5eek4/hqdefault.jpg" alt="Wedding Teaser 01" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W1/hqdefault.jpg" alt="Wedding Teaser 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 01</h3>
           <p class="video-desc">Cinematic vows and highlights.</p>
         </div>
       </div>
 
-      <div class="video-card" onclick="openModal('m1yxq4RXhio', false)">
+      <!-- Teaser 2 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W2', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/m1yxq4RXhio/hqdefault.jpg" alt="Wedding Teaser 02" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W2/hqdefault.jpg" alt="Wedding Teaser 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 02</h3>
           <p class="video-desc">Royal reception highlights.</p>
         </div>
       </div>
 
-      <div class="video-card" onclick="openModal('IPw6eakAKg4', false)">
+      <!-- Teaser 3 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W3', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/IPw6eakAKg4/hqdefault.jpg" alt="Wedding Teaser 03" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W3/hqdefault.jpg" alt="Wedding Teaser 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 03</h3>
           <p class="video-desc">Traditional rituals edit.</p>
         </div>
       </div>
 
-      <div class="video-card" onclick="openModal('IPw6eakAKg4', false)">
+      <!-- Teaser 4 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W4', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/IPw6eakAKg4/hqdefault.jpg" alt="Wedding Teaser 04" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W4/hqdefault.jpg" alt="Wedding Teaser 04" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 04</h3>
           <p class="video-desc">Emotional ceremonies & slow-motion.</p>
         </div>
       </div>
 
-      <div class="video-card" onclick="openModal('j5zpxCATVXA', false)">
+      <!-- Teaser 5 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W5', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/j5zpxCATVXA/hqdefault.jpg" alt="Wedding Teaser 05" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W5/hqdefault.jpg" alt="Wedding Teaser 05" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 05</h3>
           <p class="video-desc">Outdoor pre-wedding session.</p>
         </div>
       </div>
 
-      <div class="video-card" onclick="openModal('bHK8o04jMLM', false)">
+      <!-- Teaser 6 -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W6', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/bHK8o04jMLM/hqdefault.jpg" alt="Wedding Teaser 06" />
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W6/hqdefault.jpg" alt="Wedding Teaser 06" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 06</h3>
           <p class="video-desc">Destination wedding reel.</p>
+        </div>
+      </div>
+
+      <!-- Teaser 7 (New) -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W7', false)">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W7/hqdefault.jpg" alt="Wedding Teaser 07" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
+          <h3 class="video-title">Wedding Teaser 07</h3>
+          <p class="video-desc">Golden hour portraits & cinematic sequence.</p>
+        </div>
+      </div>
+
+      <!-- Teaser 8 (New) -->
+      <div class="video-card" onclick="openModal('VIDEO_ID_W8', false)">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_W8/hqdefault.jpg" alt="Wedding Teaser 08" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
+          <h3 class="video-title">Wedding Teaser 08</h3>
+          <p class="video-desc">Grand celebration & sangeet highlights.</p>
         </div>
       </div>
 
@@ -351,34 +400,40 @@
     <h2 class="section-title">Reels</h2>
     <div class="reels-grid">
 
+      <!-- Reel 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R1', true)">
         <div class="reel-thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_R1/hqdefault.jpg" alt="Short Reel 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Reel</span>
           <h3 class="video-title">Short Reel 01</h3>
           <p class="video-desc">Fast-cut rhythm sequence.</p>
         </div>
       </div>
 
+      <!-- Reel 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R2', true)">
         <div class="reel-thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_R2/hqdefault.jpg" alt="Short Reel 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Reel</span>
           <h3 class="video-title">Short Reel 02</h3>
           <p class="video-desc">Color grading breakdown.</p>
         </div>
       </div>
 
+      <!-- Reel 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_R3', true)">
         <div class="reel-thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_R3/hqdefault.jpg" alt="Short Reel 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">Reel</span>
           <h3 class="video-title">Short Reel 03</h3>
           <p class="video-desc">Cinematic sound design teaser.</p>
         </div>
@@ -390,34 +445,40 @@
     <h2 class="section-title">School Functions</h2>
     <div class="video-grid">
 
+      <!-- School 1 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S1', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_S1/hqdefault.jpg" alt="School Function 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">School Event</span>
           <h3 class="video-title">Annual Day Celebration</h3>
           <p class="video-desc">Stage performances and cultural events.</p>
         </div>
       </div>
 
+      <!-- School 2 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S2', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_S2/hqdefault.jpg" alt="School Function 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">School Event</span>
           <h3 class="video-title">Sports Day Highlights</h3>
           <p class="video-desc">Action sequences & prize distribution.</p>
         </div>
       </div>
 
+      <!-- School 3 -->
       <div class="video-card" onclick="openModal('VIDEO_ID_S3', false)">
         <div class="thumbnail-container">
           <img src="https://img.youtube.com/vi/VIDEO_ID_S3/hqdefault.jpg" alt="School Function 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
+          <span class="video-badge">School Event</span>
           <h3 class="video-title">Graduation Ceremony</h3>
           <p class="video-desc">Farewell speeches & ceremony documentary.</p>
         </div>
@@ -429,46 +490,4 @@
   <!-- Player Modal -->
   <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
     <div class="modal-content" id="modalContainer">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div class="video-wrapper">
-        <iframe id="youtubeFrame" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('videoModal');
-    const modalContainer = document.getElementById('modalContainer');
-    const iframe = document.getElementById('youtubeFrame');
-
-    function openModal(videoId, isReel) {
-      if (isReel) {
-        modalContainer.classList.add('is-reel');
-      } else {
-        modalContainer.classList.remove('is-reel');
-      }
-
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      modal.classList.add('active');
-    }
-
-    function closeModal() {
-      iframe.src = '';
-      modal.classList.remove('active');
-    }
-
-    function closeOnBackdrop(e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-      }
-    });
-  </script>
-
-</body>
-</html>
+      <button class="modal-
