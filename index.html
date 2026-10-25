@@ -10,7 +10,7 @@
       --muted: #4b5563;
       --accent: #2563eb;
       --border: rgba(0, 0, 0, 0.08);
-      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-bg: rgba(255, 255, 255, 0.92);
     }
 
     * {
@@ -20,7 +20,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Deeper Animated Google-Style Gradient Background */
+    /* Animated Google-Style Gradient Background */
     body {
       color: var(--text);
       line-height: 1.6;
@@ -56,19 +56,19 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 4rem 0;
+      padding: 3.5rem 0;
     }
 
     header {
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       text-align: center;
     }
 
     h1 {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       background: linear-gradient(90deg, #1d4ed8, #dc2626, #d97706, #15803d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -76,50 +76,51 @@
 
     .subtitle {
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
     }
 
     .section-title {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin: 3.5rem 0 1.5rem;
-      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-      padding-bottom: 0.5rem;
+      margin: 3rem 0 1.25rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 0.4rem;
       color: #111827;
     }
 
+    /* Slightly smaller card grid (min 260px instead of 300px) */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
     }
 
     .reels-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
     }
 
-    /* Premium Frosted Card */
+    /* Cards */
     .video-card {
       background: var(--card-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 14px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
     }
 
     .video-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(37, 99, 235, 0.45);
-      box-shadow: 0 16px 32px -4px rgba(37, 99, 235, 0.18);
+      transform: translateY(-5px);
+      border-color: rgba(37, 99, 235, 0.5);
+      box-shadow: 0 14px 28px -4px rgba(37, 99, 235, 0.18);
     }
 
     .thumbnail-container {
@@ -146,11 +147,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.35s ease;
+      transition: transform 0.3s ease;
     }
 
     .video-card:hover img {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     .play-badge {
@@ -160,46 +161,46 @@
       align-items: center;
       justify-content: center;
       background: rgba(0, 0, 0, 0.25);
-      transition: background 0.25s ease;
+      transition: background 0.2s ease;
     }
 
     .play-badge svg {
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       fill: #ffffff;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
       opacity: 0.95;
-      transition: transform 0.25s ease;
+      transition: transform 0.2s ease;
     }
 
     .video-card:hover .play-badge svg {
       transform: scale(1.15);
     }
 
-    /* Attractive Title & Info Container */
+    /* Title & Info Container */
     .video-info {
-      padding: 1.1rem 1.25rem 1.25rem;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.95) 100%);
+      padding: 0.9rem 1rem 1.1rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(243, 246, 251, 0.98) 100%);
       border-top: 1px solid rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
     .video-badge {
       align-self: flex-start;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
+      padding: 0.15rem 0.5rem;
+      border-radius: 5px;
       background: rgba(37, 99, 235, 0.08);
       color: var(--accent);
     }
 
     .video-title {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #0f172a;
       transition: color 0.2s ease;
@@ -211,8 +212,8 @@
 
     .video-desc {
       color: var(--muted);
-      font-size: 0.85rem;
-      line-height: 1.45;
+      font-size: 0.8rem;
+      line-height: 1.4;
     }
 
     /* Modal Player */
@@ -234,12 +235,12 @@
 
     .modal-content {
       width: 100%;
-      max-width: 900px;
+      max-width: 880px;
       position: relative;
     }
 
     .modal-content.is-reel {
-      max-width: 420px;
+      max-width: 400px;
     }
 
     .video-wrapper {
@@ -267,7 +268,7 @@
 
     .modal-close {
       position: absolute;
-      top: -45px;
+      top: -42px;
       right: 0;
       background: transparent;
       border: none;
@@ -286,14 +287,14 @@
       <p class="subtitle">Click any project to play</p>
     </header>
 
-    <!-- SECTION 1: CINEMATIC WEDDING TEASERS (8 Videos) -->
+    <!-- SECTION 1: CINEMATIC WEDDING TEASERS (9 Videos) -->
     <h2 class="section-title">Cinematic Wedding Teasers</h2>
     <div class="video-grid">
 
       <!-- Teaser 1 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W1', false)">
+      <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W1/hqdefault.jpg" alt="Wedding Teaser 01" />
+          <img src="https://img.youtube.com/vi/Mcfp0a5eek4/hqdefault.jpg" alt="Wedding Teaser 01" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -304,9 +305,9 @@
       </div>
 
       <!-- Teaser 2 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W2', false)">
+      <div class="video-card" onclick="openModal('m1yxq4RXhio', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W2/hqdefault.jpg" alt="Wedding Teaser 02" />
+          <img src="https://img.youtube.com/vi/m1yxq4RXhio/hqdefault.jpg" alt="Wedding Teaser 02" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -317,9 +318,9 @@
       </div>
 
       <!-- Teaser 3 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W3', false)">
+      <div class="video-card" onclick="openModal('SzmZ1Hz_GMI', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W3/hqdefault.jpg" alt="Wedding Teaser 03" />
+          <img src="https://img.youtube.com/vi/SzmZ1Hz_GMI/hqdefault.jpg" alt="Wedding Teaser 03" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -330,9 +331,9 @@
       </div>
 
       <!-- Teaser 4 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W4', false)">
+      <div class="video-card" onclick="openModal('IPw6eakAKg4', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W4/hqdefault.jpg" alt="Wedding Teaser 04" />
+          <img src="https://img.youtube.com/vi/IPw6eakAKg4/hqdefault.jpg" alt="Wedding Teaser 04" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -343,9 +344,9 @@
       </div>
 
       <!-- Teaser 5 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W5', false)">
+      <div class="video-card" onclick="openModal('j5zpxCATVXA', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W5/hqdefault.jpg" alt="Wedding Teaser 05" />
+          <img src="https://img.youtube.com/vi/j5zpxCATVXA/hqdefault.jpg" alt="Wedding Teaser 05" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -356,9 +357,9 @@
       </div>
 
       <!-- Teaser 6 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W6', false)">
+      <div class="video-card" onclick="openModal('utdZToj4MF8', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W6/hqdefault.jpg" alt="Wedding Teaser 06" />
+          <img src="https://img.youtube.com/vi/utdZToj4MF8/hqdefault.jpg" alt="Wedding Teaser 06" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -368,10 +369,10 @@
         </div>
       </div>
 
-      <!-- Teaser 7 (New) -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W7', false)">
+      <!-- Teaser 7 -->
+      <div class="video-card" onclick="openModal('bHK8o04jMLM', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W7/hqdefault.jpg" alt="Wedding Teaser 07" />
+          <img src="https://img.youtube.com/vi/bHK8o04jMLM/hqdefault.jpg" alt="Wedding Teaser 07" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
@@ -381,16 +382,29 @@
         </div>
       </div>
 
-      <!-- Teaser 8 (New) -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_W8', false)">
+      <!-- Teaser 8 -->
+      <div class="video-card" onclick="openModal('DSda4Ylpi_8', false)">
         <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_W8/hqdefault.jpg" alt="Wedding Teaser 08" />
+          <img src="https://img.youtube.com/vi/DSda4Ylpi_8/hqdefault.jpg" alt="Wedding Teaser 08" />
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
           <span class="video-badge">Wedding Film</span>
           <h3 class="video-title">Wedding Teaser 08</h3>
           <p class="video-desc">Grand celebration & sangeet highlights.</p>
+        </div>
+      </div>
+
+      <!-- Teaser 9 -->
+      <div class="video-card" onclick="openModal('IYySvgR-qvo', false)">
+        <div class="thumbnail-container">
+          <img src="https://img.youtube.com/vi/IYySvgR-qvo/hqdefault.jpg" alt="Wedding Teaser 09" />
+          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Wedding Film</span>
+          <h3 class="video-title">Wedding Teaser 09</h3>
+          <p class="video-desc">Unforgettable moments & cinematic cuts.</p>
         </div>
       </div>
 
@@ -407,87 +421,4 @@
           <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="video-info">
-          <span class="video-badge">Reel</span>
-          <h3 class="video-title">Short Reel 01</h3>
-          <p class="video-desc">Fast-cut rhythm sequence.</p>
-        </div>
-      </div>
-
-      <!-- Reel 2 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_R2', true)">
-        <div class="reel-thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_R2/hqdefault.jpg" alt="Short Reel 02" />
-          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">Reel</span>
-          <h3 class="video-title">Short Reel 02</h3>
-          <p class="video-desc">Color grading breakdown.</p>
-        </div>
-      </div>
-
-      <!-- Reel 3 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_R3', true)">
-        <div class="reel-thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_R3/hqdefault.jpg" alt="Short Reel 03" />
-          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">Reel</span>
-          <h3 class="video-title">Short Reel 03</h3>
-          <p class="video-desc">Cinematic sound design teaser.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- SECTION 3: SCHOOL FUNCTIONS (3 Videos) -->
-    <h2 class="section-title">School Functions</h2>
-    <div class="video-grid">
-
-      <!-- School 1 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_S1', false)">
-        <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_S1/hqdefault.jpg" alt="School Function 01" />
-          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">School Event</span>
-          <h3 class="video-title">Annual Day Celebration</h3>
-          <p class="video-desc">Stage performances and cultural events.</p>
-        </div>
-      </div>
-
-      <!-- School 2 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_S2', false)">
-        <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_S2/hqdefault.jpg" alt="School Function 02" />
-          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">School Event</span>
-          <h3 class="video-title">Sports Day Highlights</h3>
-          <p class="video-desc">Action sequences & prize distribution.</p>
-        </div>
-      </div>
-
-      <!-- School 3 -->
-      <div class="video-card" onclick="openModal('VIDEO_ID_S3', false)">
-        <div class="thumbnail-container">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_S3/hqdefault.jpg" alt="School Function 03" />
-          <div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">School Event</span>
-          <h3 class="video-title">Graduation Ceremony</h3>
-          <p class="video-desc">Farewell speeches & ceremony documentary.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Player Modal -->
-  <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
-    <div class="modal-content" id="modalContainer">
-      <button class="modal-
+          <span class="video-badge
