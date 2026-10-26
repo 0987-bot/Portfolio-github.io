@@ -70,7 +70,7 @@
       color: var(--accent);
     }
 
-    /* Cinematic Hero Banner with Profile Picture next to name */
+    /* Cinematic Hero Banner */
     .hero {
       position: relative;
       width: 100%;
@@ -100,23 +100,32 @@
     }
 
     .hero-profile-pic {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       border: 3px solid #ffffff;
       object-fit: cover;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
     }
 
+    /* Animated and slightly smaller name style */
     .hero-title-area h1 {
-      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-size: clamp(2rem, 5vw, 4.2rem);
       font-weight: 900;
       line-height: 0.95;
       letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
+      animation: shine 4s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
     }
 
     .hero-subtitle {
@@ -375,14 +384,14 @@
 
   <!-- Top Navigation Bar -->
   <nav>
-    <div class="nav-logo">Moinak Paul</div>
+    <div class="nav-logo">Portfolio</div>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Cinematic Hero Banner with Profile Picture next to name -->
+  <!-- Cinematic Hero Banner with Animated Name & Profile Pic -->
   <section class="hero">
     <div class="hero-container">
       <div class="hero-profile-title">
