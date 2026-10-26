@@ -136,53 +136,11 @@
       display: block;
     }
 
-    /* Services Section */
-    .services-section {
-      max-width: 1200px;
-      margin: 3.5rem auto;
-      padding: 0 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 3.5rem;
-    }
-
-    .services-left h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.2;
-      color: var(--text);
-    }
-
-    .services-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-
-    .service-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--border);
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .service-item span:first-child {
-      color: var(--accent);
-      font-family: monospace;
-      font-size: 0.95rem;
-    }
-
     /* Main Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 2rem 5rem;
+      padding: 2rem 2rem 5rem;
     }
 
     /* Section Headings */
@@ -291,6 +249,43 @@
       transform: scale(1.15);
     }
 
+    /* Footer / Contact Section */
+    footer {
+      background-color: #05070a;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-info {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-info a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-info a:hover {
+      text-decoration: underline;
+    }
+
     /* Modal Player */
     .modal {
       display: none;
@@ -354,7 +349,7 @@
     }
 
     @media (max-width: 768px) {
-      .hero-container, .services-section {
+      .hero-container {
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
@@ -373,7 +368,7 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar with Profile Pic in White Circle -->
+  <!-- Top Navigation Bar -->
   <nav>
     <div class="nav-brand">
       <img src="IMG_20261025_154637.jpg.jpg" alt="Moinak Paul" class="nav-profile-pic" />
@@ -381,9 +376,6 @@
     </div>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
-      <li><a href="#">Portfolio</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
@@ -399,19 +391,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Services Section -->
-  <div class="services-section">
-    <div class="services-left">
-      <h3>We Specialize In Video Editing That Elevates Brands, Events, And Personal Stories.</h3>
-    </div>
-    <div class="services-list">
-      <div class="service-item"><span>/1</span> <span>Cinematic Wedding Films</span></div>
-      <div class="service-item"><span>/2</span> <span>Fast-Paced Reels & Shorts</span></div>
-      <div class="service-item"><span>/3</span> <span>School & Event Highlights</span></div>
-      <div class="service-item"><span>/4</span> <span>Creative Direction & Color Grading</span></div>
-    </div>
-  </div>
 
   <div class="container">
 
@@ -472,6 +451,17 @@
       </div>
     </div>
   </div>
+
+  <!-- Footer / Contact Details -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-title">Get In Touch</div>
+      <div class="footer-info">
+        Phone: <a href="tel:+919836865375">+91 9836865375</a><br>
+        Email: <a href="mailto:moinakpaul0987@gmail.com">moinakpaul0987@gmail.com</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Player Modal -->
   <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
