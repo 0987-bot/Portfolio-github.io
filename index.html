@@ -67,7 +67,7 @@
         .hero {
             position: relative;
             width: 100%;
-            min-height: 480px;
+            min-height: 520px;
             background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
             display: flex;
             flex-direction: column;
@@ -127,11 +127,62 @@
             color: var(--text);
             display: block;
         }
+        /* About & Skills Bio Section */
+        .bio-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2.5rem auto 1rem;
+            max-width: 1200px;
+        }
+        .bio-roles {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .bio-text {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+        .skills-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .skill-tag {
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--text);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .skill-tag:hover {
+            border-color: var(--accent);
+            background: rgba(244, 63, 94, 0.2);
+            transform: translateY(-2px);
+        }
         /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 2rem 5rem;
+            padding: 1rem 2rem 5rem;
         }
         /* Section Headings */
         .section-title {
@@ -362,6 +413,7 @@
         <div class="nav-logo">Portfolio</div>
         <ul class="nav-links">
             <li><a onclick="scrollToSection('home')">Home</a></li>
+            <li><a onclick="scrollToSection('about')">About</a></li>
             <li><a onclick="scrollToSection('weddings')">Weddings</a></li>
             <li><a onclick="scrollToSection('reels')">Reels</a></li>
             <li><a onclick="scrollToSection('highlights')">Highlights</a></li>
@@ -385,20 +437,33 @@
         </div>
     </section>
 
-    <div class="container">
-        
-        <!-- SECTION 1: CINEMATIC WEDDING TEASERS (1st & 3rd Swapped) -->
+    <!-- About & Skills Section -->
+    <div class="container" id="about">
+        <div class="bio-section">
+            <div class="bio-roles">Video Editor / Motion Graphics Artist / Creator</div>
+            <p class="bio-text">
+                Passionate professional video editor and visual storyteller with extensive hands-on experience in bringing cinematic visions to life. Specializing in high-end wedding teasers, dynamic social media reels, school event highlights, and engaging visual edits. Dedicated to delivering seamless pacing, compelling color grading, and captivating motion design for every project.
+            </p>
+            <div class="skills-heading">Skills & Software Expertise</div>
+            <div class="skills-badges">
+                <span class="skill-tag">Adobe Premiere Pro</span>
+                <span class="skill-tag">Adobe After Effects</span>
+                <span class="skill-tag">Adobe Animate</span>
+                <span class="skill-tag">Adobe Photoshop</span>
+                <span class="skill-tag">Video Editing & Color Grading</span>
+                <span class="skill-tag">Motion Graphics & VFX</span>
+            </div>
+        </div>
+
+        <!-- SECTION 1: CINEMATIC WEDDING TEASERS -->
         <h2 class="section-title" id="weddings">Cinematic Wedding Teasers</h2>
         <div class="video-grid">
-            <!-- 1st Video (Previously 3rd: SzmZ1Hz_GMI) -->
             <div class="video-card" onclick="openModal('SzmZ1Hz_GMI', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/SzmZ1Hz_GMI/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/SzmZ1Hz_GMI/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
-            <!-- 2nd Video (m1yxq4RXhio) -->
             <div class="video-card" onclick="openModal('m1yxq4RXhio', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/m1yxq4RXhio/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/m1yxq4RXhio/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
-            <!-- 3rd Video (Previously 1st: Mcfp0a5eek4) -->
             <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/Mcfp0a5eek4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Mcfp0a5eek4/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
