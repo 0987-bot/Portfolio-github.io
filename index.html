@@ -158,9 +158,11 @@
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.25rem;
         }
+        /* Adjusted smaller grid for reels to make thumbnails crisp */
         .reels-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            max-width: 650px;
             gap: 1.25rem;
         }
         /* Video Cards */
@@ -215,8 +217,8 @@
             transition: background 0.2s ease;
         }
         .play-badge svg {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             fill: #ffffff;
             opacity: 0.9;
             transition: transform 0.2s ease;
@@ -388,7 +390,7 @@
             </div>
         </div>
 
-        <!-- SECTION 2: REELS (High-Res hq720.jpg applied) -->
+        <!-- SECTION 2: REELS (Optimized Smaller Size) -->
         <h2 class="section-title">Reels</h2>
         <div class="reels-grid">
             <div class="video-card" onclick="openModal('p1n_afmfY-E', true)">
