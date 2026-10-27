@@ -89,38 +89,43 @@
             gap: 1.75rem;
         }
         
-        /* White Pulsing Aura Glow Animation Around Profile Picture */
+        /* New Neon Gradient Rotating Ring Animation Around Profile Picture */
         .profile-avatar-wrapper {
             position: relative;
-            width: 136px;
-            height: 136px;
+            width: 138px;
+            height: 138px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
-        .profile-pulsing-aura {
+        .profile-neon-ring {
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.2));
-            animation: pulseAura 3s ease-in-out infinite;
+            background: conic-gradient(from 0deg, var(--accent), #3b82f6, #a855f7, var(--accent));
+            animation: spinNeonRing 6s linear infinite;
             z-index: 1;
-            opacity: 0.8;
         }
-        @keyframes pulseAura {
-            0%, 100% { transform: scale(1); opacity: 0.4; filter: blur(4px); }
-            50% { transform: scale(1.06); opacity: 0.8; filter: blur(8px); }
+        @keyframes spinNeonRing {
+            to { transform: rotate(360deg); }
+        }
+        .profile-avatar-inner {
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: var(--bg);
+            z-index: 2;
         }
         .hero-profile-pic {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 3px solid #ffffff;
             object-fit: cover;
             position: relative;
-            z-index: 2;
-            background: var(--bg);
+            z-index: 3;
+            display: block;
+            margin: auto;
         }
 
         .hero-title-area h1 {
@@ -512,7 +517,8 @@
         <div class="hero-container">
             <div class="hero-profile-title">
                 <div class="profile-avatar-wrapper">
-                    <div class="profile-pulsing-aura"></div>
+                    <div class="profile-neon-ring"></div>
+                    <div class="profile-avatar-inner"></div>
                     <img src="upsampled_img_13912249778567657116.png" alt="Moinak Paul" class="hero-profile-pic" />
                 </div>
                 <div class="hero-title-area">
