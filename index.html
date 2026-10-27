@@ -1,549 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moinak Paul — Video Portfolio</title>
-  <style>
-    :root {
-      --bg: #07090e;
-      --card-bg: #0f141f;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --accent: #f43f5e;
-      --border: #1f293d;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* Top Navigation Bar */
-    nav {
-      background-color: rgba(7, 9, 14, 0.9);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-logo {
-      font-size: 1.3rem;
-      font-weight: 900;
-      letter-spacing: 0.05em;
-      color: var(--text);
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: color 0.2s ease;
-      cursor: pointer;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Cinematic Hero Banner */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 480px;
-      background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), 
-                  url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 3rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .hero-profile-title {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-    }
-
-    .hero-profile-pic {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #ffffff;
-      object-fit: cover;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
-    }
-
-    .hero-title-area h1 {
-      font-size: clamp(2rem, 5vw, 4.2rem);
-      font-weight: 900;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shine 4s linear infinite;
-    }
-
-    @keyframes shine {
-      to {
-        background-position: 200% center;
-      }
-    }
-
-    .hero-subtitle {
-      text-align: right;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--muted);
-      line-height: 1.3;
-      background: rgba(7, 9, 14, 0.7);
-      padding: 0.85rem 1.25rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(6px);
-    }
-
-    .hero-subtitle span {
-      color: var(--text);
-      display: block;
-    }
-
-    /* Main Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 2rem 5rem;
-    }
-
-    /* Section Headings */
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin: 3.5rem 0 1.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.6rem;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .section-title::before {
-      content: "";
-      width: 6px;
-      height: 20px;
-      background-color: var(--accent);
-      border-radius: 2px;
-    }
-
-    /* Grids */
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .reels-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1.25rem;
-    }
-
-    /* Video Cards */
-    .video-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .video-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 25px -5px rgba(244, 63, 94, 0.2);
-    }
-
-    .thumbnail-container {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-      overflow: hidden;
-    }
-
-    .reel-thumbnail-container {
-      position: relative;
-      width: 100%;
-      padding-top: 177.77%;
-      background: #000;
-      overflow: hidden;
-    }
-
-    .thumbnail-container img,
-    .reel-thumbnail-container img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-
-    .video-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .play-badge {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.4);
-      transition: background 0.2s ease;
-    }
-
-    .play-badge svg {
-      width: 40px;
-      height: 40px;
-      fill: #ffffff;
-      opacity: 0.9;
-      transition: transform 0.2s ease;
-    }
-
-    .video-card:hover .play-badge svg {
-      transform: scale(1.15);
-    }
-
-    /* Footer / Contact Section */
-    footer {
-      background-color: #05070a;
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-top: 4rem;
-    }
-
-    .footer-content {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .footer-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .footer-info {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .footer-info a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .footer-info a:hover {
-      text-decoration: underline;
-    }
-
-    /* Modal Player */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(7, 9, 14, 0.95);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      width: 100%;
-      max-width: 850px;
-      position: relative;
-    }
-
-    .modal-content.is-reel {
-      max-width: 380px;
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-top: 56.25%;
-      width: 100%;
-      background: #000;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
-      border: 1px solid var(--border);
-    }
-
-    .modal-content.is-reel .video-wrapper {
-      padding-top: 177.77%;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: -42px;
-      right: 0;
-      background: transparent;
-      border: none;
-      color: #ffffff;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .hero-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-      }
-      .hero-profile-title {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .hero-subtitle {
-        text-align: left;
-      }
-      nav {
-        padding: 1rem;
-      }
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moinak Paul — Video Portfolio</title>
+    <style>
+        :root {
+            --bg: #07090e;
+            --card-bg: #0f141f;
+            --text: #f9fafb;
+            --muted: #9ca3af;
+            --accent: #f43f5e;
+            --border: #1f293d;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        /* Top Navigation Bar */
+        nav {
+            background-color: rgba(7, 9, 14, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: var(--text);
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        /* Cinematic Hero Banner */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 480px;
+            background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .hero-profile-title {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .hero-profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            object-fit: cover;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+        .hero-title-area h1 {
+            font-size: clamp(2rem, 5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        .hero-subtitle {
+            text-align: right;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--muted);
+            line-height: 1.3;
+            background: rgba(7, 9, 14, 0.7);
+            padding: 0.85rem 1.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(6px);
+        }
+        .hero-subtitle span {
+            color: var(--text);
+            display: block;
+        }
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+        }
+        /* Section Headings */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 3.5rem 0 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title::before {
+            content: "";
+            width: 6px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        /* Grids */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.25rem;
+        }
+        /* Video Cards */
+        .video-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 25px -5px rgba(244, 63, 94, 0.2);
+        }
+        .thumbnail-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+            overflow: hidden;
+        }
+        .reel-thumbnail-container {
+            position: relative;
+            width: 100%;
+            padding-top: 177.77%;
+            background: #000;
+            overflow: hidden;
+        }
+        .thumbnail-container img, .reel-thumbnail-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+        .video-card:hover img {
+            transform: scale(1.05);
+        }
+        .play-badge {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.2s ease;
+        }
+        .play-badge svg {
+            width: 40px;
+            height: 40px;
+            fill: #ffffff;
+            opacity: 0.9;
+            transition: transform 0.2s ease;
+        }
+        .video-card:hover .play-badge svg {
+            transform: scale(1.15);
+        }
+        /* Footer / Contact Section */
+        footer {
+            background-color: #05070a;
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .footer-info {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        .footer-info a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+        /* Modal Player */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 9, 14, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            width: 100%;
+            max-width: 850px;
+            position: relative;
+        }
+        .modal-content.is-reel {
+            max-width: 380px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            width: 100%;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--border);
+        }
+        .modal-content.is-reel .video-wrapper {
+            padding-top: 177.77%;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .modal-close {
+            position: absolute;
+            top: -42px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .hero-profile-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero-subtitle {
+                text-align: left;
+            }
+            nav {
+                padding: 1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body id="home">
 
-  <!-- Top Navigation Bar -->
-  <nav>
-    <div class="nav-logo">Portfolio</div>
-    <ul class="nav-links">
-      <li><a onclick="scrollToSection('home')">Home</a></li>
-      <li><a onclick="scrollToSection('contact')">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- Top Navigation Bar -->
+    <nav>
+        <div class="nav-logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a onclick="scrollToSection('home')">Home</a></li>
+            <li><a onclick="scrollToSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
 
-  <!-- Cinematic Hero Banner -->
-  <section class="hero">
-    <div class="hero-container">
-      <div class="hero-profile-title">
-        <img src="upsampled_img_13912249778567657116.png" alt="Moinak Paul" class="hero-profile-pic" />
-        <div class="hero-title-area">
-          <h1>Moinak<br>Paul</h1>
+    <!-- Cinematic Hero Banner -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-profile-title">
+                <img src="upsampled_img_13912249778567657116.png" alt="Moinak Paul" class="hero-profile-pic" />
+                <div class="hero-title-area">
+                    <h1>Moinak<br>Paul</h1>
+                </div>
+            </div>
+            <div class="hero-subtitle">
+                <span>Capturing Moments.</span> Crafting Cinematic Stories.
+            </div>
         </div>
-      </div>
-      <div class="hero-subtitle">
-        <span>Capturing Moments.</span>
-        Crafting Cinematic Stories.
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="container">
+    <div class="container">
+        
+        <!-- SECTION 1: CINEMATIC WEDDING TEASERS -->
+        <h2 class="section-title">Cinematic Wedding Teasers</h2>
+        <div class="video-grid">
+            <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/Mcfp0a5eek4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Mcfp0a5eek4/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('m1yxq4RXhio', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/m1yxq4RXhio/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/m1yxq4RXhio/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('SzmZ1Hz_GMI', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/SzmZ1Hz_GMI/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/SzmZ1Hz_GMI/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('IPw6eakAKg4', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/IPw6eakAKg4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/IPw6eakAKg4/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('j5zpxCATVXA', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/j5zpxCATVXA/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/j5zpxCATVXA/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('utdZToj4MF8', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/utdZToj4MF8/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/utdZToj4MF8/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('bHK8o04jMLM', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/bHK8o04jMLM/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/bHK8o04jMLM/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('DSda4Ylpi_8', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/DSda4Ylpi_8/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/DSda4Ylpi_8/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+        </div>
 
-    <!-- SECTION 1: CINEMATIC WEDDING TEASERS -->
-    <h2 class="section-title">Cinematic Wedding Teasers</h2>
-    <div class="video-grid">
-      <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/Mcfp0a5eek4/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('m1yxq4RXhio', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/m1yxq4RXhio/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('SzmZ1Hz_GMI', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/SzmZ1Hz_GMI/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('IPw6eakAKg4', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/IPw6eakAKg4/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('j5zpxCATVXA', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/j5zpxCATVXA/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('utdZToj4MF8', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/utdZToj4MF8/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('bHK8o04jMLM', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/bHK8o04jMLM/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('DSda4Ylpi_8', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/DSda4Ylpi_8/maxresdefault.jpg" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-    </div>
+        <!-- SECTION 2: REELS -->
+        <h2 class="section-title">Reels</h2>
+        <div class="reels-grid">
+            <div class="video-card" onclick="openModal('p1n_afmfY-E', true)">
+                <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/p1n_afmfY-E/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/p1n_afmfY-E/mqdefault.jpg'" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('y1w458FtC5o', true)">
+                <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/y1w458FtC5o/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/y1w458FtC5o/mqdefault.jpg'" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('SurEFz7GWq8', true)">
+                <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/SurEFz7GWq8/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/SurEFz7GWq8/mqdefault.jpg'" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+        </div>
 
-    <!-- SECTION 2: REELS -->
-    <h2 class="section-title">Reels</h2>
-    <div class="reels-grid">
-      <div class="video-card" onclick="openModal('p1n_afmfY-E', true)">
-        <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/p1n_afmfY-E/hqdefault.jpg" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('y1w458FtC5o', true)">
-        <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/y1w458FtC5o/hqdefault.jpg" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('SurEFz7GWq8', true)">
-        <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/SurEFz7GWq8/hqdefault.jpg" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-    </div>
+        <!-- SECTION 3: SCHOOL HIGHLIGHTS -->
+        <h2 class="section-title">School Highlights</h2>
+        <div class="video-grid">
+            <div class="video-card" onclick="openModal('W7Mrj-059Og', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/W7Mrj-059Og/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/W7Mrj-059Og/mqdefault.jpg'" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('XfmphHAW7Ks', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/XfmphHAW7Ks/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/XfmphHAW7Ks/mqdefault.jpg'" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('kydlLS_VGd4', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/kydlLS_VGd4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/kydlLS_VGd4/mqdefault.jpg'" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+        </div>
 
-    <!-- SECTION 3: SCHOOL HIGHLIGHTS -->
-    <h2 class="section-title">School Highlights</h2>
-    <div class="video-grid">
-      <div class="video-card" onclick="openModal('W7Mrj-059Og', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/W7Mrj-059Og/maxresdefault.jpg" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('XfmphHAW7Ks', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/XfmphHAW7Ks/maxresdefault.jpg" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('kydlLS_VGd4', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/kydlLS_VGd4/maxresdefault.jpg" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-    </div>
+        <!-- SECTION 4: MY OTHER WORKS -->
+        <h2 class="section-title">My Other Works</h2>
+        <div class="video-grid">
+            <div class="video-card" onclick="openModal('EprdHr90S38', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/EprdHr90S38/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/EprdHr90S38/mqdefault.jpg'" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('lfh-v5wfmzI', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/lfh-v5wfmzI/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/lfh-v5wfmzI/mqdefault.jpg'" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('ScZNd0zWoJI', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/ScZNd0zWoJI/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/ScZNd0zWoJI/mqdefault.jpg'" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="video-card" onclick="openModal('OAAXrfPvvRE', false)">
+                <div class="thumbnail-container"><img src="https://img.youtube.com/vi/OAAXrfPvvRE/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/OAAXrfPvvRE/mqdefault.jpg'" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+        </div>
 
-    <!-- SECTION 4: MY OTHER WORKS -->
-    <h2 class="section-title">My Other Works</h2>
-    <div class="video-grid">
-      <div class="video-card" onclick="openModal('EprdHr90S38', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/EprdHr90S38/maxresdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('lfh-v5wfmzI', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/lfh-v5wfmzI/maxresdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('ScZNd0zWoJI', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/ScZNd0zWoJI/maxresdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
-      <div class="video-card" onclick="openModal('OAAXrfPvvRE', false)">
-        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/OAAXrfPvvRE/maxresdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      </div>
     </div>
 
-  </div>
+    <!-- Footer / Contact Details -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-title">Get In Touch</div>
+            <div class="footer-info">
+                Phone: <a href="tel:+919836865375">+91 9836865375</a><br>
+                Email: <a href="mailto:moinakpaul0987@gmail.com">moinakpaul0987@gmail.com</a>
+            </div>
+        </div>
+    </footer>
 
-  <!-- Footer / Contact Details -->
-  <footer id="contact">
-    <div class="footer-content">
-      <div class="footer-title">Get In Touch</div>
-      <div class="footer-info">
-        Phone: <a href="tel:+919836865375">+91 9836865375</a><br>
-        Email: <a href="mailto:moinakpaul0987@gmail.com">moinakpaul0987@gmail.com</a>
-      </div>
+    <!-- Player Modal -->
+    <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
+        <div class="modal-content" id="modalContainer">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="video-wrapper">
+                <iframe id="youtubeFrame" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
-  </footer>
 
-  <!-- Player Modal -->
-  <div class="modal" id="videoModal" onclick="closeOnBackdrop(event)">
-    <div class="modal-content" id="modalContainer">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div class="video-wrapper">
-        <iframe id="youtubeFrame" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
+    <script>
+        const modal = document.getElementById('videoModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const iframe = document.getElementById('youtubeFrame');
 
-  <script>
-    const modal = document.getElementById('videoModal');
-    const modalContainer = document.getElementById('modalContainer');
-    const iframe = document.getElementById('youtubeFrame');
+        function openModal(videoId, isReel) {
+            if (isReel) {
+                modalContainer.classList.add('is-reel');
+            } else {
+                modalContainer.classList.remove('is-reel');
+            }
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            modal.classList.add('active');
+        }
 
-    function openModal(videoId, isReel) {
-      if (isReel) {
-        modalContainer.classList.add('is-reel');
-      } else {
-        modalContainer.classList.remove('is-reel');
-      }
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      modal.classList.add('active');
-    }
+        function closeModal() {
+            iframe.src = '';
+            modal.classList.remove('active');
+        }
 
-    function closeModal() {
-      iframe.src = '';
-      modal.classList.remove('active');
-    }
+        function closeOnBackdrop(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        }
 
-    function closeOnBackdrop(e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    }
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-    function scrollToSection(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-      }
-    });
-  </script>
-
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
