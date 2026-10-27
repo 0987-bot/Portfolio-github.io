@@ -89,7 +89,7 @@
             gap: 1.75rem;
         }
         
-        /* New Neon Gradient Rotating Ring Animation Around Profile Picture */
+        /* Clean Neon Ring Animation Around Profile Picture */
         .profile-avatar-wrapper {
             position: relative;
             width: 138px;
@@ -369,6 +369,15 @@
         .video-card:hover .play-badge svg {
             transform: scale(1.15);
         }
+        .video-card-title {
+            padding: 0.85rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: rgba(15, 20, 31, 0.5);
+        }
         /* Footer / Contact Section */
         footer {
             background-color: #05070a;
@@ -383,7 +392,7 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.25rem;
         }
         .footer-title {
             font-size: 1.25rem;
@@ -393,13 +402,36 @@
         .footer-info {
             color: var(--muted);
             font-size: 0.95rem;
+            line-height: 1.8;
         }
         .footer-info a {
             color: var(--accent);
             text-decoration: none;
+            font-weight: 500;
         }
         .footer-info a:hover {
             text-decoration: underline;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .social-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
         }
         /* Modal Player */
         .modal {
@@ -565,27 +597,35 @@
         <div class="video-grid">
             <div class="video-card" onclick="openModal('SzmZ1Hz_GMI', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/SzmZ1Hz_GMI/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/SzmZ1Hz_GMI/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Multi-Vibe Teaser</div>
             </div>
             <div class="video-card" onclick="openModal('m1yxq4RXhio', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/m1yxq4RXhio/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/m1yxq4RXhio/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Trending Teaser</div>
             </div>
             <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/Mcfp0a5eek4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Mcfp0a5eek4/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Modern Look of Teaser</div>
             </div>
             <div class="video-card" onclick="openModal('IPw6eakAKg4', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/IPw6eakAKg4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/IPw6eakAKg4/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Fast-Pase Mehndi Teaser</div>
             </div>
             <div class="video-card" onclick="openModal('j5zpxCATVXA', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/j5zpxCATVXA/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/j5zpxCATVXA/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Cinematic Rice-Ceremmony Teaser</div>
             </div>
             <div class="video-card" onclick="openModal('utdZToj4MF8', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/utdZToj4MF8/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/utdZToj4MF8/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Teaser Depends on Trends</div>
             </div>
             <div class="video-card" onclick="openModal('bHK8o04jMLM', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/bHK8o04jMLM/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/bHK8o04jMLM/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Classy Cinematic Teaser</div>
             </div>
             <div class="video-card" onclick="openModal('DSda4Ylpi_8', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/DSda4Ylpi_8/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/DSda4Ylpi_8/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                <div class="video-card-title">Traditional Teaser</div>
             </div>
         </div>
 
@@ -647,8 +687,13 @@
         <div class="footer-content">
             <div class="footer-title">Get In Touch</div>
             <div class="footer-info">
-                Phone: <a href="tel:+919836865375">+91 9836865375</a><br>
+                Phone / WhatsApp: <a href="https://wa.me/919836865375" target="_blank">+91 9836865375</a><br>
                 Email: <a href="mailto:moinakpaul0987@gmail.com">moinakpaul0987@gmail.com</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/moinak200paul/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/in/moinak-paul-093690247/" target="_blank">LinkedIn</a>
+                <a href="https://wa.me/919836865375" target="_blank">WhatsApp</a>
             </div>
         </div>
     </footer>
