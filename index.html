@@ -135,6 +135,15 @@
             padding: 2.5rem;
             margin: 2.5rem auto 1rem;
             max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .bio-content {
+            flex: 1;
+            min-width: 280px;
         }
         .bio-roles {
             font-size: 1.15rem;
@@ -149,7 +158,6 @@
             font-size: 1.05rem;
             line-height: 1.7;
             margin-bottom: 2rem;
-            max-width: 900px;
         }
         .skills-heading {
             font-size: 1.2rem;
@@ -177,6 +185,56 @@
             border-color: var(--accent);
             background: rgba(244, 63, 94, 0.2);
             transform: translateY(-2px);
+        }
+        /* Rotating Experience Circle Animation */
+        .experience-badge-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 160px;
+            height: 160px;
+            flex-shrink: 0;
+            margin: 0 auto;
+        }
+        .rotating-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed rgba(244, 63, 94, 0.5);
+            animation: rotateRing 12s linear infinite;
+        }
+        @keyframes rotateRing {
+            to { transform: rotate(360deg); }
+        }
+        .experience-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(15, 20, 31, 0.9));
+            border: 2px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .experience-number {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1;
+        }
+        .experience-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
         }
         /* Main Container */
         .container {
@@ -437,21 +495,32 @@
         </div>
     </section>
 
-    <!-- About & Skills Section -->
+    <!-- About & Skills Section with Rotating Experience Badge -->
     <div class="container" id="about">
         <div class="bio-section">
-            <div class="bio-roles">Video Editor / Motion Graphics Artist / Creator</div>
-            <p class="bio-text">
-                Passionate professional video editor and visual storyteller with extensive hands-on experience in bringing cinematic visions to life. Specializing in high-end wedding teasers, dynamic social media reels, school event highlights, and engaging visual edits. Dedicated to delivering seamless pacing, compelling color grading, and captivating motion design for every project.
-            </p>
-            <div class="skills-heading">Skills & Software Expertise</div>
-            <div class="skills-badges">
-                <span class="skill-tag">Adobe Premiere Pro</span>
-                <span class="skill-tag">Adobe After Effects</span>
-                <span class="skill-tag">Adobe Animate</span>
-                <span class="skill-tag">Adobe Photoshop</span>
-                <span class="skill-tag">Video Editing & Color Grading</span>
-                <span class="skill-tag">Motion Graphics & VFX</span>
+            <div class="bio-content">
+                <div class="bio-roles">Video Editor / Motion Graphics Artist / Creator</div>
+                <p class="bio-text">
+                    Passionate professional video editor and visual storyteller with extensive hands-on experience in bringing cinematic visions to life. Specializing in high-end wedding teasers, dynamic social media reels, school event highlights, and engaging visual edits. Dedicated to delivering seamless pacing, compelling color grading, and captivating motion design for every project.
+                </p>
+                <div class="skills-heading">Skills & Software Expertise</div>
+                <div class="skills-badges">
+                    <span class="skill-tag">Adobe Premiere Pro</span>
+                    <span class="skill-tag">Adobe After Effects</span>
+                    <span class="skill-tag">Adobe Animate</span>
+                    <span class="skill-tag">Adobe Photoshop</span>
+                    <span class="skill-tag">Video Editing & Color Grading</span>
+                    <span class="skill-tag">Motion Graphics & VFX</span>
+                </div>
+            </div>
+            
+            <!-- Rotating Experience Circle Animation -->
+            <div class="experience-badge-wrapper">
+                <div class="rotating-ring"></div>
+                <div class="experience-circle">
+                    <span class="experience-number">5+</span>
+                    <span class="experience-label">Years Exp</span>
+                </div>
             </div>
         </div>
 
