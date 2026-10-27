@@ -23,6 +23,7 @@
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
         /* Top Navigation Bar */
         nav {
@@ -144,6 +145,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            scroll-margin-top: 100px;
         }
         .section-title::before {
             content: "";
@@ -233,6 +235,7 @@
             padding: 3rem 2rem;
             text-align: center;
             margin-top: 4rem;
+            scroll-margin-top: 100px;
         }
         .footer-content {
             max-width: 600px;
@@ -328,9 +331,9 @@
                 padding: 1rem;
             }
             .nav-links {
-                display: none;
+                gap: 1rem;
+                font-size: 0.8rem;
             }
-            /* Allows horizontal scrolling smoothly on smaller mobile screens so they don't squish */
             .reels-grid {
                 display: flex;
                 overflow-x: auto;
@@ -359,6 +362,10 @@
         <div class="nav-logo">Portfolio</div>
         <ul class="nav-links">
             <li><a onclick="scrollToSection('home')">Home</a></li>
+            <li><a onclick="scrollToSection('weddings')">Weddings</a></li>
+            <li><a onclick="scrollToSection('reels')">Reels</a></li>
+            <li><a onclick="scrollToSection('highlights')">Highlights</a></li>
+            <li><a onclick="scrollToSection('works')">Works</a></li>
             <li><a onclick="scrollToSection('contact')">Contact</a></li>
         </ul>
     </nav>
@@ -381,7 +388,7 @@
     <div class="container">
         
         <!-- SECTION 1: CINEMATIC WEDDING TEASERS -->
-        <h2 class="section-title">Cinematic Wedding Teasers</h2>
+        <h2 class="section-title" id="weddings">Cinematic Wedding Teasers</h2>
         <div class="video-grid">
             <div class="video-card" onclick="openModal('Mcfp0a5eek4', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/Mcfp0a5eek4/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Mcfp0a5eek4/mqdefault.jpg'" alt="Wedding Teaser" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -409,8 +416,8 @@
             </div>
         </div>
 
-        <!-- SECTION 2: REELS (All 5 in One Single Line) -->
-        <h2 class="section-title">Reels</h2>
+        <!-- SECTION 2: REELS -->
+        <h2 class="section-title" id="reels">Reels</h2>
         <div class="reels-grid">
             <div class="video-card" onclick="openModal('p1n_afmfY-E', true)">
                 <div class="reel-thumbnail-container"><img src="https://img.youtube.com/vi/p1n_afmfY-E/hq720.jpg" onerror="this.src='https://img.youtube.com/vi/p1n_afmfY-E/hqdefault.jpg'" alt="Reel" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -430,7 +437,7 @@
         </div>
 
         <!-- SECTION 3: SCHOOL HIGHLIGHTS -->
-        <h2 class="section-title">School Highlights</h2>
+        <h2 class="section-title" id="highlights">School Highlights</h2>
         <div class="video-grid">
             <div class="video-card" onclick="openModal('W7Mrj-059Og', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/W7Mrj-059Og/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/W7Mrj-059Og/mqdefault.jpg'" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -444,7 +451,7 @@
         </div>
 
         <!-- SECTION 4: MY OTHER WORKS -->
-        <h2 class="section-title">My Other Works</h2>
+        <h2 class="section-title" id="works">My Other Works</h2>
         <div class="video-grid">
             <div class="video-card" onclick="openModal('EprdHr90S38', false)">
                 <div class="thumbnail-container"><img src="https://img.youtube.com/vi/EprdHr90S38/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/EprdHr90S38/mqdefault.jpg'" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
