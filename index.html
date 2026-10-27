@@ -158,12 +158,17 @@
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.25rem;
         }
-        /* Extremely compact reels grid so YouTube's source resolution looks sharp and clear */
+        /* Centered, balanced reels grid layout */
         .reels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-            max-width: 520px;
-            gap: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .reels-grid .video-card {
+            width: 200px;
         }
         /* Video Cards */
         .video-card {
@@ -217,8 +222,8 @@
             transition: background 0.2s ease;
         }
         .play-badge svg {
-            width: 26px;
-            height: 26px;
+            width: 32px;
+            height: 32px;
             fill: #ffffff;
             opacity: 0.9;
             transition: transform 0.2s ease;
@@ -330,6 +335,9 @@
             .nav-links {
                 display: none;
             }
+            .reels-grid .video-card {
+                width: 150px;
+            }
         }
     </style>
 </head>
@@ -390,7 +398,7 @@
             </div>
         </div>
 
-        <!-- SECTION 2: REELS (Compact & Crisp Size) -->
+        <!-- SECTION 2: REELS (Centered & Balanced Size) -->
         <h2 class="section-title">Reels</h2>
         <div class="reels-grid">
             <div class="video-card" onclick="openModal('p1n_afmfY-E', true)">
