@@ -158,17 +158,12 @@
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.25rem;
         }
-        /* Centered, balanced reels grid layout */
+        /* All 5 reels forced into one single horizontal row */
         .reels-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            max-width: 950px;
-            margin: 0 auto;
-        }
-        .reels-grid .video-card {
-            width: 200px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            width: 100%;
         }
         /* Video Cards */
         .video-card {
@@ -222,8 +217,8 @@
             transition: background 0.2s ease;
         }
         .play-badge svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             fill: #ffffff;
             opacity: 0.9;
             transition: transform 0.2s ease;
@@ -335,8 +330,24 @@
             .nav-links {
                 display: none;
             }
+            /* Allows horizontal scrolling smoothly on smaller mobile screens so they don't squish */
+            .reels-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 0.5rem;
+            }
+            .reels-grid::-webkit-scrollbar {
+                height: 6px;
+            }
+            .reels-grid::-webkit-scrollbar-thumb {
+                background: var(--border);
+                border-radius: 3px;
+            }
             .reels-grid .video-card {
-                width: 150px;
+                min-width: 140px;
+                scroll-snap-align: start;
             }
         }
     </style>
@@ -398,7 +409,7 @@
             </div>
         </div>
 
-        <!-- SECTION 2: REELS (5 Reels with new additions) -->
+        <!-- SECTION 2: REELS (All 5 in One Single Line) -->
         <h2 class="section-title">Reels</h2>
         <div class="reels-grid">
             <div class="video-card" onclick="openModal('p1n_afmfY-E', true)">
