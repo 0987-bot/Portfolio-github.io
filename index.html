@@ -89,7 +89,7 @@
             gap: 1.75rem;
         }
         
-        /* Animated Ring Around Profile Picture */
+        /* Unique Pulsing Aura Glow Animation Around Profile Picture */
         .profile-avatar-wrapper {
             position: relative;
             width: 136px;
@@ -99,15 +99,18 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        .profile-rotating-ring {
+        .profile-pulsing-aura {
             position: absolute;
-            inset: 0;
+            inset: -4px;
             border-radius: 50%;
-            border: 2px dashed var(--accent);
-            animation: rotateAvatarRing 15s linear infinite;
+            background: linear-gradient(135deg, var(--accent), transparent, #3b82f6);
+            animation: pulseAura 3s ease-in-out infinite;
+            z-index: 1;
+            opacity: 0.8;
         }
-        @keyframes rotateAvatarRing {
-            to { transform: rotate(360deg); }
+        @keyframes pulseAura {
+            0%, 100% { transform: scale(1); opacity: 0.6; filter: blur(4px); }
+            50% { transform: scale(1.06); opacity: 1; filter: blur(8px); }
         }
         .hero-profile-pic {
             width: 120px;
@@ -115,9 +118,9 @@
             border-radius: 50%;
             border: 3px solid #ffffff;
             object-fit: cover;
-            box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
             position: relative;
             z-index: 2;
+            background: var(--bg);
         }
 
         .hero-title-area h1 {
@@ -509,7 +512,7 @@
         <div class="hero-container">
             <div class="hero-profile-title">
                 <div class="profile-avatar-wrapper">
-                    <div class="profile-rotating-ring"></div>
+                    <div class="profile-pulsing-aura"></div>
                     <img src="upsampled_img_13912249778567657116.png" alt="Moinak Paul" class="hero-profile-pic" />
                 </div>
                 <div class="hero-title-area">
