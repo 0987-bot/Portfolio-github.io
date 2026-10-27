@@ -25,7 +25,6 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      scroll-behavior: smooth;
     }
 
     /* Top Navigation Bar */
@@ -64,6 +63,7 @@
       font-weight: 500;
       letter-spacing: 0.02em;
       transition: color 0.2s ease;
+      cursor: pointer;
     }
 
     .nav-links a:hover {
@@ -96,19 +96,19 @@
     .hero-profile-title {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
+    /* Larger Profile Picture to match name size */
     .hero-profile-pic {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       border: 3px solid #ffffff;
       object-fit: cover;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
     }
 
-    /* Animated and slightly smaller name style */
     .hero-title-area h1 {
       font-size: clamp(2rem, 5vw, 4.2rem);
       font-weight: 900;
@@ -380,18 +380,18 @@
     }
   </style>
 </head>
-<body>
+<body id="home">
 
   <!-- Top Navigation Bar -->
   <nav>
     <div class="nav-logo">Portfolio</div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a onclick="scrollToSection('home')">Home</a></li>
+      <li><a onclick="scrollToSection('contact')">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Cinematic Hero Banner with Animated Name & Profile Pic -->
+  <!-- Cinematic Hero Banner -->
   <section class="hero">
     <div class="hero-container">
       <div class="hero-profile-title">
@@ -465,6 +465,24 @@
         <div class="thumbnail-container"><img src="https://img.youtube.com/vi/kydlLS_VGd4/hqdefault.jpg" alt="School Highlight" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       </div>
     </div>
+
+    <!-- SECTION 4: MY OTHER WORKS -->
+    <h2 class="section-title">My Other Works</h2>
+    <div class="video-grid">
+      <div class="video-card" onclick="openModal('EprdHr90S38', false)">
+        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/EprdHr90S38/hqdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      </div>
+      <div class="video-card" onclick="openModal('lfh-v5wfmzI', false)">
+        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/lfh-v5wfmzI/hqdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      </div>
+      <div class="video-card" onclick="openModal('ScZNd0zWoJI', false)">
+        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/ScZNd0zWoJI/hqdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      </div>
+      <div class="video-card" onclick="openModal('OAAXrfPvvRE', false)">
+        <div class="thumbnail-container"><img src="https://img.youtube.com/vi/OAAXrfPvvRE/hqdefault.jpg" alt="Other Work" /><div class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Footer / Contact Details -->
@@ -511,6 +529,13 @@
     function closeOnBackdrop(e) {
       if (e.target === modal) {
         closeModal();
+      }
+    }
+
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
 
