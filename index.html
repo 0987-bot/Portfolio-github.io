@@ -63,14 +63,14 @@
         .nav-links a:hover {
             color: var(--accent);
         }
-        /* Cinematic Hero Banner with Animated Timeline Background */
+        /* Cinematic Hero Banner with Infinite Right-to-Left Sliding Timeline */
         .hero {
             position: relative;
             width: 100%;
             min-height: 520px;
-            background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            background-size: cover;
-            animation: backgroundPan 25s ease-in-out infinite alternate;
+            background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=2000&q=80') repeat-x center/cover;
+            background-size: auto 100%;
+            animation: infiniteSlide 30s linear infinite;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -78,9 +78,9 @@
             border-bottom: 1px solid var(--border);
             overflow: hidden;
         }
-        @keyframes backgroundPan {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        @keyframes infiniteSlide {
+            0% { background-position: 0% center; }
+            100% { background-position: 100% center; }
         }
         .hero-container {
             max-width: 1200px;
@@ -98,27 +98,29 @@
             gap: 1.75rem;
         }
         
-        /* Updated Glowing Animated Pulsing Background Around Profile Picture */
+        /* Smooth Rotating & Glowing White Ring Animation Around Profile Picture */
         .profile-avatar-wrapper {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 144px;
+            height: 144px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
-        .profile-glow-ring {
+        .profile-white-glow-ring {
             position: absolute;
-            inset: -6px;
+            inset: -4px;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--accent) 0%, rgba(244, 63, 94, 0.4) 60%, transparent 100%);
-            animation: pulseGlow 3s ease-in-out infinite;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            animation: smoothRotate 4s linear infinite;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.4);
             z-index: 1;
         }
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1.08); opacity: 1; }
+        @keyframes smoothRotate {
+            to { transform: rotate(360deg); }
         }
         .hero-profile-pic {
             width: 120px;
@@ -128,9 +130,10 @@
             border: 3px solid #ffffff;
             position: relative;
             z-index: 3;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
             display: block;
             margin: auto;
+            background: var(--bg);
         }
 
         .hero-title-area h1 {
@@ -558,12 +561,12 @@
         </ul>
     </nav>
 
-    <!-- Cinematic Hero Banner with Animated Timeline Background -->
+    <!-- Cinematic Hero Banner with Infinite Sliding Timeline Background -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-profile-title">
                 <div class="profile-avatar-wrapper">
-                    <div class="profile-glow-ring"></div>
+                    <div class="profile-white-glow-ring"></div>
                     <img src="upsampled_img_2903638609068768565.png" alt="Moinak Paul" class="hero-profile-pic" />
                 </div>
                 <div class="hero-title-area">
