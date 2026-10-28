@@ -63,14 +63,14 @@
         .nav-links a:hover {
             color: var(--accent);
         }
-        /* Cinematic Hero Banner with Infinite Right-to-Left Sliding Timeline */
+        /* Cinematic Hero Banner with Clean Seamless Sliding Timeline */
         .hero {
             position: relative;
             width: 100%;
             min-height: 520px;
-            background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=2000&q=80') repeat-x center/cover;
-            background-size: auto 100%;
-            animation: infiniteSlide 30s linear infinite;
+            background: linear-gradient(to right, rgba(7,9,14,0.95) 40%, rgba(7,9,14,0.6)), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=2000&q=80') no-repeat center center;
+            background-size: cover;
+            animation: timelineSlide 20s ease-in-out infinite alternate;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -78,9 +78,9 @@
             border-bottom: 1px solid var(--border);
             overflow: hidden;
         }
-        @keyframes infiniteSlide {
-            0% { background-position: 0% center; }
-            100% { background-position: 100% center; }
+        @keyframes timelineSlide {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
         .hero-container {
             max-width: 1200px;
@@ -561,7 +561,7 @@
         </ul>
     </nav>
 
-    <!-- Cinematic Hero Banner with Infinite Sliding Timeline Background -->
+    <!-- Cinematic Hero Banner with Clean Sliding Timeline Background -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-profile-title">
